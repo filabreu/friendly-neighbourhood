@@ -24,7 +24,7 @@ class Link
     @body ||= request.body
   end
 
-  def scrap
-    @scrap ||= git Scrapper.new(body)
+  def scrape
+    @scrape ||= Crawler.new(body)
   end
 end
