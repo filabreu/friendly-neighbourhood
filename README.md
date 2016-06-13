@@ -1,24 +1,59 @@
-# README
+# Friendly Neighbourhood - Web Crawler
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Friendly Neighbourhood is an app to scrap pages for title, description,
+main image and video duration.
 
-Things you may want to cover:
+## Endpoints
 
-* Ruby version
+### GET /link
 
-* System dependencies
+#### Parameters
+`url: string # required`
 
-* Configuration
+#### Responses
 
-* Database creation
+##### 200 OK
 
-* Database initialization
+```
+{
+  "url": "http://example.com",# string
+  "code": 200, # integer
+  "message": "OK", # string
+  "title": "Page Title", #string
+  "description": "Page description text.", # string
+  "main_image": "http://example.com/image.png", # string
+  "duration": {
+    "minutes": "1", # string
+    "seconds": "23" # string
+  }
+}
+```
 
-* How to run the test suite
+##### 404 Not Found
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+{
+  "url": "http://example.com/404",
+  "code": 404,
+  "message": "Not Found",
+  "title": "Example Domain",
+  "description": "",
+  "main_image": "",
+  "duration": {
+    "minutes": null,
+    "seconds": null
+  }
+}
+```
 
-* Deployment instructions
+##### 422 Unprocessable Entity
 
-* ...
+```
+{
+  "error": "url is required"
+}
+```
+
+
+### Check it out!
+[http://friendly-neighbourhood.herokuapp.com/link?url=https://www.youtube.com/watch?v=oHg5SJYRHA0]
