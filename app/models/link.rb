@@ -36,11 +36,13 @@ class Link
     { minutes: scrape.minutes, seconds: scrape.seconds }
   end
 
-  def body
-    @body ||= request.body
-  end
 
-  def scrape
-    @scrape ||= Crawler.new(body)
-  end
+  protected
+    def body
+      @body ||= request.body
+    end
+
+    def scrape
+      @scrape ||= Crawler.new(body)
+    end
 end
