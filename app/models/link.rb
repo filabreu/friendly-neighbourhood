@@ -20,6 +20,22 @@ class Link
     @message ||= request.message
   end
 
+  def title
+    scrape.title
+  end
+
+  def description
+    scrape.description
+  end
+
+  def main_image
+    scrape.main_image
+  end
+
+  def duration
+    { minutes: scrape.minutes, seconds: scrape.seconds }
+  end
+
   def body
     @body ||= request.body
   end
