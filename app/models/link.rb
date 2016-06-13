@@ -1,4 +1,5 @@
 class Link
+  alias :read_attribute_for_serialization :send
 
   def initialize(url)
     @url = url
